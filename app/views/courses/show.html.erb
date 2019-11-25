@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<div style="width:400px; height:auto">
+  <%=image_tag(@course.thumbnail, style:'width:100%;height:auto') %>
+</div>
+
+<div style="width:400px; height:auto">
+  <%=video_tag(url_for(@course.clip),controls:'', style:'width:100%;height:auto') %>
+</div>
+
+<p>
+  <strong>Price:</strong>
+  <%= @course.price %>
+</p>
+
+ <section class="section comments">
+    <div class="container">
+        <h2 class="subtitle is-5"><strong><%= @course.comments.count %></strong> Comments</h2>
+        <%= render @course.comments %>
+        <div class="comment-form">
+            <hr />
+            <h3 class="subtitle is-3">Leave a reply</h3>
+             <%= render 'comments/form' %>
+        </div>
+    </div>
+</section>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
+
+</div>
+
+

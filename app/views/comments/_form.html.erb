@@ -1,0 +1,15 @@
+<!--This description will be the comment input field displayed on the show screen of blog -->
+<%= form_for([@course, @course.comments.build]) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_area :title %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
