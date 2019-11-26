@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+# letter opener
+gem 'letter_opener', group: :development
 # stripe payment gem
 gem 'stripe', :git =>'https://github.com/stripe/stripe-ruby'
 # Use SCSS for stylesheets
