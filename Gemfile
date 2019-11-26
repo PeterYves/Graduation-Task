@@ -14,6 +14,8 @@ gem 'stripe', :git =>'https://github.com/stripe/stripe-ruby'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem "sassc", "< 2.2.0"
+#letter opener
+gem 'letter_opener'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
