@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+# stripe payment gem
+gem 'stripe', :git =>'https://github.com/stripe/stripe-ruby'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem "sassc", "< 2.2.0"

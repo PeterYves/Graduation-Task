@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+ <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+ <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
 <p>
   <strong>Name:</strong>
@@ -17,27 +21,41 @@
 <div style="width:400px; height:auto">
   <%=video_tag(url_for(@course.clip),controls:'', style:'width:100%;height:auto') %>
 </div>
+<video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    download="true"
+    poster="<%= url_for(@course.thumbnail) %>"
+    data-setup="{}">
+    <source src="<%= url_for(@course.clip) %>" type="video/mp4"/>
+    
+  </video>
 
 <p>
   <strong>Price:</strong>
   <%= @course.price %>
 </p>
 
- <section class="section comments">
-    <div class="container">
-        <h2 class="subtitle is-5"><strong><%= @course.comments.count %></strong> Comments</h2>
-        <%= render @course.comments %>
-        <div class="comment-form">
-            <hr />
-            <h3 class="subtitle is-3">Leave a reply</h3>
-             <%= render 'comments/form' %>
-        </div>
-    </div>
-</section>
+ 
+  <p>List of Comments(Contents below are important)</p>
+
+  <!-- Get an HTML id of this comments_area and update only the part of that div -->
+  <div id="comments_area">
+    <!-- Render to display the posted comment list on the blogs detail page -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+  </div>
+
+  <!-- Render to display the comment field on the blogs detail page -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
 
 </div>
+<script src="https://vjs.zencdn.net/7.5.5/video.js"></script>
 
 
