@@ -15,6 +15,12 @@ class ChargesController < ApplicationController
     :description => "Rails Stripe customer",
     :currency => "usd"
     )
+
+    payment= Payment.create(email: params[:stripeEmail],card: params[:stripeToken],
+        amount: params[:amount],description: charge.description,currency: charge.currency,
+        customer_id: customer.id,product_id: 1)
+
+        redirect_to payment
     
     rescue Stripe::CardError => e
     flash[:error] = e.message
