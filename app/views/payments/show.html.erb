@@ -1,4 +1,7 @@
 <p>Thank you for paying to learn <%= @course.name%></p>
 <p><%=@course.description%>
 <p>$<%=@course.price%>
+<div style="width:400px; height:auto">
+  <%=video_tag(url_for(@course.clip),controls:'', style:'width:100%;height:auto') %>
+</div>
 <p>Your Course is <%=@payment.inspect %>

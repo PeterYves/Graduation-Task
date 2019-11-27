@@ -1,8 +1,10 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  
+
   def index
-    @courses = Course.all
+    #@courses = Course.all
+    @q = Course.ransack(params[:q])
+    @courses = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -17,8 +19,8 @@ class CoursesController < ApplicationController
   def edit
   end
   def create
-    @course = Course.new(course_params)
-    # course = current_user.courses.build(course_params)
+    # @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
       if @course.save
         redirect_to @course, notice: 'Course was successfully created.'
       else
@@ -45,6 +47,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:name, :description, :price, :clip, :thumbnail)
+      params.require(:course).permit(:name, :description, :price, :clip, :thumbnail,:user_id)
     end
 end

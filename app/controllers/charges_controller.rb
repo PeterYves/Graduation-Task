@@ -3,7 +3,7 @@ class ChargesController < ApplicationController
     end
     
     def create
-    course= Course.first
+    course= Course.find(params[:course_id])
     
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
