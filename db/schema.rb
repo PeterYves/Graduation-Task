@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(version: 2019_11_26_203453) do
     t.integer "amount"
     t.string "description"
     t.string "currency"
-    t.string "customer_id"
+    t.string "user_id"
     t.string "card"
-    t.integer "product_id"
+    t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "uuid"

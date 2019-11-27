@@ -5,9 +5,9 @@ class CreatePayments < ActiveRecord::Migration[6.0]
       t.integer :amount
       t.string :description
       t.string :currency
-      t.string :customer_id
+      t.string :user_id
       t.string :card
-      t.integer :product_id
+      t.integer :course_id
       t.timestamps
     end
   end

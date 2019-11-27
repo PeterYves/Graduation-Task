@@ -3,6 +3,7 @@ class ChargesController < ApplicationController
     end
     
     def create
+    course= Course.first
     
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
@@ -11,14 +12,14 @@ class ChargesController < ApplicationController
     
     charge = Stripe::Charge.create(
     :customer => customer.id,
-    :amount => params[:amount],
+    :amount => course.price_in_cents,
     :description => "Rails Stripe customer",
     :currency => "usd"
     )
 
     payment= Payment.create(email: params[:stripeEmail],card: params[:stripeToken],
-        amount: params[:amount],description: charge.description,currency: charge.currency,
-        customer_id: customer.id,product_id: 1, uuid: SecureRandom.uuid)
+        amount: course.price_in_cents,description: course.description,currency: charge.currency,
+        user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
 
         redirect_to payment
     

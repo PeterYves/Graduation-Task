@@ -2,28 +2,11 @@
 
 <h1>Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Video</th>
-      <th>Price</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%=video_tag(url_for(course.clip),controls:'', style:'width:30px;height:auto') %></td>
-        <td><%= course.price %>$</td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
+    <% raw @course.description %>
+        <td><%= @course.name %></td>
+        <td><%= @course.price %></td>
+        
 <%= form_tag charges_path, id:'chargeForm' do %>
 
 <% if flash[:error].present? %>
@@ -34,7 +17,7 @@
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <%= hidden_field_tag 'stripeToken'%>
-<%= hidden_field_tag 'amount',course.price %>
+<%= hidden_field_tag 'amount',@course.price_in_cents %>
 <%= hidden_field_tag 'stripeEmail'%>
 <button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
 glyphicon-ok"></span>Pay</button>
@@ -51,18 +34,14 @@ glyphicon-ok"></span>Pay</button>
   document.getElementById("btn-buy").addEventListener('click',function(e){
         handler.open({
           name: 'learn rails',
-          description: '<%= course.name %> ($<%= course.price %>)',
+          description: '<%= @course.name %> ($<%= @course.price %>)',
           amount: document.getElementById("amount").value 
         });
         e.preventDefault();
   })
   </script>
 <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+       
 
 <br>
 

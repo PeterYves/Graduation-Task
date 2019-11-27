@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   end
   resources :charges
   resources :payments, only: [:show]
-  root to: 'courses#index'
+  resources :pages
+  root to: 'pages#home'
 end
