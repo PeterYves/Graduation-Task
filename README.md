@@ -2,6 +2,9 @@
 
 # Online Programming Courses selling Platform
 
+### Project Overview
+  online programming video courses selling platform is a platform made in ruby on rails which will help any one who wants to learn programming languages he wants without going to school but study it online without paying much money at school and waste long time at school when he has to learn it at a very short time and get it well done with so much explanation and practice by seeing how he can do it live in that tutorial as he is at school. if a learner  or someone who visits this platform got an issue or want to give us compliment on a certain video course he has watched he can do it in comment box of that video course) and course owner (admin/online mentor) can view his  request and reply him in comment box or if a learner wants a tutorials which is not yet uploaded on the platform he can suggest it and admin(online mentor) do it and  upload  it. what required only is to pay the course and be allowed to watch it online or download it and learn.
+
 ### Versions
   * ruby '2.6.3'
   * rails '5.2.3'
