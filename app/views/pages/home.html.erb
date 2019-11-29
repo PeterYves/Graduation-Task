@@ -1,48 +1,68 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Courses</h1>
 
 
-    
-        <td><%= @course.name %></td>
-        <td><%= @course.price %></td>
-        
-<%= form_tag charges_path, id:'chargeForm' do %>
+  <main>
+    <div class="container-fluid text-center">
+      <!--Card-->
+      <div class="card card-cascade wider reverse my-4 pb-5">
+        <!--Card image-->
+        <div class="view view-cascade overlay wow fadeIn">
+          <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(135).jpg" class="img-fluid">
+          <a href="#!">
+            <div class="centered">
+              <% @courses.each do |course| %>
+                <%= course.name %>
+                <%= course.description %>
+              <% end %>
+          </div>
+          </a>
+          </a>
+        </div>
+        <!--/Card image-->
+      </div>
+      <!--/.Card-->
+    </div>
+  </main>
+  <!--/Main layout-->
 
-<% if flash[:error].present? %>
-<div id="error_explanation">
-<p><%= flash[:error] %></p>
-</div>
-<% end %>
+<main class="mt-5">
+    <!--Main container-->
+    <div class="container">
+      <div class="row">
+       <% @courses.each do |course| %>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+          <!--Card-->
+          <div class="card">
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-<%= hidden_field_tag 'stripeToken'%>
-<%= hidden_field_tag 'amount',@course.price_in_cents %>
-<%= hidden_field_tag 'stripeEmail'%>
-<button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
-glyphicon-ok"></span>Pay</button>
+            <!--Card image-->
+            <div class="view overlay">
+              <video id="my-video" class="video-js" controls preload="auto" width="640"
+    height="264" download="true" poster="<%= url_for(course.thumbnail) %>" data-setup="{}">
+    <source src="<%= url_for(course.clip) %>" type="video/mp4"/></video>
+              <a href="#">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
 
-<script>
-  var handler = StripeCheckout.configure({
-    key: '<%= Rails.configuration.stripe[:publishable_key]%>',
-    token: function(token, arg){
-      document.getElementById("stripeToken").value=token.id;
-      document.getElementById("stripeEmail").value=token.email;
-      document.getElementById("chargeForm").submit();
-    }
-  });
-  document.getElementById("btn-buy").addEventListener('click',function(e){
-        handler.open({
-          name: 'learn rails',
-          description: '<%= @course.name %> ($<%= @course.price %>)',
-          amount: document.getElementById("amount").value 
-        });
-        e.preventDefault();
-  })
-  </script>
-<% end %>
-       
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title"><%= course.name %></h4>
+              <!--Text-->
+              <p class="card-text"><%= course.description %></p>
+              <a href="#!" class="btn btn-indigo">Button</a>
+            </div>
 
-<br>
+          </div>
+          <!--/.Card-->
 
-<%= link_to 'New Course', new_course_path %>
+        </div>
+        <!--Grid column-->
+         <% end %>
+    </div>
+    <!--Main container-->
+
+  </main>
+  <!--Main layout-->
+
+  

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :payments, only: [:show]
   resources :pages
-  root to: 'courses#index'
+  root to: 'pages#home'
   devise_for :users, :controllers => { registrations: 'registrations' }
 
 end

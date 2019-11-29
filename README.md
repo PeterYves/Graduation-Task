@@ -55,3 +55,9 @@
  * kaminari
  * activeadmin
  * ransack
+
+### Skills to be used:
+
+ * devise
+ * comments using AJAX
+ * Payment using stripe

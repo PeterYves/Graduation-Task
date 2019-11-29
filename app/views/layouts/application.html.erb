@@ -14,42 +14,131 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="fixed-sn green-skin">
-
-<!--Main Navigation-->
-<header>
-
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    
-        <% if user_signed_in? %>
+  <body class="fixed-sn navy-blue-skin">
+    <header>
+    <!--/. Sidebar navigation -->
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav bg-light">
+      <!-- SideNav slide-out button -->
+      <div class="logo-text">
+        <a class="nav-link"> <span class="clearfix d-none d-sm-inline-block"><i class="fa fa-laptop">Programming Hub</i></span></a>   
+      </div>
+      <ul class="nav navbar-nav nav-flex-icons ml-auto">
         <li class="nav-item">
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+          <i class="fas fa-home"><%= link_to 'Home', root_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
         </li>
         <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <i class="fas fa-book"><%= link_to 'Courses', courses_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
+        </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <i class="fas fa-user"><%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
+        </li>
+        <li class="nav-item">
+          <i class="fas fa-sign-out-alt"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link',style:'color:black;text-decoration:none'  %></i>
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+          <i class="fa fa-user-plus"><%= link_to "Register", new_user_registration_path, :class => 'navbar-link',style:'color:black;text-decoration:none'  %></i>
         </li>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <i class="fas fa-sign-in-alt"><%= link_to "Login", new_user_session_path, :class => 'navbar-link',style:'color:black;text-decoration:none'  %></i>
         </li>
        <% end %>
-      
-  </nav>
+      </ul>
+    </nav>
+    <!-- /.Navbar -->
+  </header>
+<br><br><br><br><br><br>
 
-
-
-
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
     <%= yield %>
-    </body>
+
+
+<!-- Footer -->
+  <footer class="page-footer font-small indigo pt-4 mt-4">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
     <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->

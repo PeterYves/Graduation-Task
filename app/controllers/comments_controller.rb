@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @course = Course.find(params[:course_id])
     @comment = @course.comments.build(comment_params)
