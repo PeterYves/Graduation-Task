@@ -1,39 +1,60 @@
-<h2>Sign up</h2>
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <%= f.text_field :names, autofocus: true, autocomplete: "names",id:"orangeForm-name", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Full Names</label>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <%= f.text_field :user_type, autofocus: true, autocomplete: "user_type",id:"orangeForm-email", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-email">User Type</label>
+        </div>
 
-  <div class="field">
-    <%= f.label :Names %><br />
-    <%= f.text_field :names, autofocus: true, autocomplete: "names" %>
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"orangeForm-email", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+         <%= f.password_field :password, autocomplete: "new-password",id:"orangeForm-pass", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password<% if @minimum_password_length %>
+         <em>(<%= @minimum_password_length %> characters minimum)</em>
+         <% end %><br /></label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",id:"orangeForm-pass", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-deep-orange">Sign up</button>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :User_Type %><br />
-    <%= f.text_field :user_type, autofocus: true, autocomplete: "user_type" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+    Modal Register Form</a>
+</div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<br><br><br><br><br><br><br><br>

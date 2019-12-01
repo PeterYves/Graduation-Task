@@ -1,26 +1,58 @@
-<h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"defaultForm-email",class:"form-control validate" %>
+          
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          
+         <%= f.password_field :password, autocomplete: "current-password",id:"defaultForm-pass", class:"form-control validate" %>
+          
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Login</button>
+      </div>
+      <!--Footer-->
+      <% if devise_mapping.rememberable? %>
+        <div class="field" style="margin-left:10px">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+       <% end %>
+            <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                <%= render "devise/shared/links" %>
+              </div>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+            </div>     
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
+</div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+    Modal Login Form</a>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
