@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   def show
     @comments = @course.comments
     @comment = @course.comments.build
+    @payments=Payment.all
   end
 
   def new

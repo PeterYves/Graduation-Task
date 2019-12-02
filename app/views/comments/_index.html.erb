@@ -1,13 +1,14 @@
 <ul>
   <% comments.each do |comment| %>
     <% if comment.id.present? %>
-    <div id="comments_<%= comment.id %>" class="row single-comment">
+    <div id="comments_<%= comment.id %>" class="comments">
       
-      <td><p><%= comment.user.email %></p></td>&nbsp;&nbsp;
-      <td> <p><%= comment.description %></p></td>
-
+      <h6><%= comment.user.email %></h2>
+      <%= comment.description %>
+<% if comment.user.email== current_user.email%>
 <%= button_to(course_comment_path(@course.id,comment.id), {method: :delete, remote: true, class:"btn btn-danger delete-comment-button pull-right",value:'delete', params:{id: comment.id, course: course.id}} ) do%>
       <i class="glyphicon glyphicon-trash"></i>
+    <% end %>
     <% end %>
 
 </div>

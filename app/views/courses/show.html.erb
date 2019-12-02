@@ -81,76 +81,75 @@
 
                                         <%= form_tag charges_path, id:'chargeForm' do %>
 
-<% if flash[:error].present? %>
-<div id="error_explanation">
-<p><%= flash[:error] %></p>
-</div>
-<% end %>
+                                         <% if flash[:error].present? %>
+                                           <div id="error_explanation">
+                                             <p><%= flash[:error] %></p>
+                                           </div>
+                                         <% end %>
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-<%= hidden_field_tag 'stripeToken'%>
-<%= hidden_field_tag 'amount',@course.price_in_cents %>
-<%= hidden_field_tag 'stripeEmail',current_user.email%>
-<%= hidden_field_tag 'course_id', @course.id %>
-<button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
-glyphicon-ok"></span>Pay</button>
+                                          <script src="https://checkout.stripe.com/checkout.js"></script>
+                                          <%= hidden_field_tag 'stripeToken'%>
+                                          <%= hidden_field_tag 'amount',@course.price_in_cents %>
+                                          <%= hidden_field_tag 'stripeEmail',current_user.email%>
+                                          <%= hidden_field_tag 'course_id', @course.id %>
+                                          <button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
+                                          glyphicon-ok"></span>Pay</button>
 
-<script>
-  var handler = StripeCheckout.configure({
-    key: '<%= Rails.configuration.stripe[:publishable_key]%>',
-    token: function(token, arg){
-      document.getElementById("stripeToken").value=token.id;
-      document.getElementById("stripeEmail").value=token.email;
-      document.getElementById("chargeForm").submit();
-    }
-  });
-  document.getElementById("btn-buy").addEventListener('click',function(e){
-        handler.open({
-          name: 'learn rails',
-          description: '<%= @course.name %> ($<%= @course.price %>)',
-          amount: document.getElementById("amount").value 
-        });
-        e.preventDefault();
-  })
-  </script>
-<% end %>
+                                        <script>
+                                          var handler = StripeCheckout.configure({
+                                          key: '<%= Rails.configuration.stripe[:publishable_key]%>',
+                                          token: function(token, arg){
+                                          document.getElementById("stripeToken").value=token.id;
+                                          document.getElementById("stripeEmail").value=token.email;
+                                          document.getElementById("chargeForm").submit();
+                                           }
+                                         });
+                                          document.getElementById("btn-buy").addEventListener('click',function(e){
+                                          handler.open({
+                                          name: 'Programming HUb',
+                                          description: '<%= @course.name %> ($<%= @course.price %>)',
+                                          amount: document.getElementById("amount").value 
+                                        });
+                                          e.preventDefault();
+                                        })
+                                        </script>
+                                        <% end %>
                                             <i class="fa fa-arrow-circle-up ml-1"></i>
                                         </span>
                                     </h5>
-
-                                    
-
                                 </div>
                                 <!--Grid column-->
-
                             </div>
                             <!--Grid row-->
-
                         </div>
                         <!--Panel content-->
-
-                    </div>
-                    <!--Grid column-->
-
+                    </div> 
                     <!--Grid column-->
                     <div class="col-md-7">
-
-                        <!--Panel Header-->
-                        <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
-                              <div style="width:100%; height:auto;margin-left:50px">
-                            <video id="my-video" class="video-js" controls preload="auto" width="700px"
-                              height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
-                               <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
-                         </div>
+                      <% if current_user.user_type=="admin" || current_user.email==@course.user.email%>
+                      <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
+                        <div style="width:100%; height:auto;margin-left:50px">
+                          <video id="my-video" class="video-js" controls preload="auto" width="700px"
+                          height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
+                          <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
                         </div>
+                        
+                      </div>
+                      <% else %>
+                        <%= render partial: 'payments/index' %>
+                        <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
+                        <div style="width:100%; height:auto;margin-left:50px;position: relative;">
+                          <video id="my-video" class="video-js" width="700px"
+                          height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
+                          <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
+                        </div>
+                      <% end %>
                         <!--/Card image-->
-
+                        
                     </div>
-                    <!--Grid column-->
-
+                    
                 </div>
                 <!--Grid row-->
-
             </section>
             <!--Section: Main panel-->
 
@@ -182,11 +181,11 @@ glyphicon-ok"></span>Pay</button>
 
                             <!--Blue select--
 
-  <!-- Get an HTML id of this comments_area and update only the part of that div -->
-  <div id="comments_area">
-    <!-- Render to display the posted comment list on the blogs detail page -->
-    <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
-  </div>
+                        <!-- Get an HTML id of this comments_area and update only the part of that div -->
+                          <div id="comments_area">
+                          <!-- Render to display the posted comment-->
+                            <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+                          </div>
 
   
                             <!--/Blue select-->

@@ -1,34 +1,39 @@
-<div class="main">
-<h1 class="header"><%= t('view.welcome') %></h1>
-<div class="content"
-<p id="notice"><%= notice %></p>
-<hr>
-<div class="tasks">
-<h1>Users</h1>
+<h1 class="header"><%= t('view.Users-list') %></h1>
+<p id="notice" class="alert-danger"><%= notice %></p>
+  <div class="table-responsive">
 
-<table>
-  <thead>
-    <tr>
-      <th>User Name</th>
-      <th>Email</th>
-      <th>User_type</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+  <!--Table-->
+  <table class="table">
+    <!--Table head-->
+    <thead>
       <tr>
+        <th class="th-lg">User Name</th>
+        <th class="th-lg">Email</th>
+        <th class="th-lg">User_type</th>
+        <th class="th-lg" colspan=3> Actions</th>
+      </tr></td>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+    <% @users.each do |user| %>
+      <tr> 
         <td><%= user.names %></td>
         <td><%= user.email %></td>
         <td><%= user.user_type %></td>
-       
         <td><%= link_to 'Show', user,class:'btn-sm btn-info' %></td>
+        <td><%= link_to 'Edit', user,class:'btn-sm btn-info' %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class:'btn-sm btn-danger' %></td>
       </tr>
+
+    </tbody>
+    <!--Table body-->
     <% end %>
-  </tbody>
-</table>
+  </table>
+  <%= link_to 'New User',new_user_path %>
 </div>
-</div>
-</div>
+
+
+
 

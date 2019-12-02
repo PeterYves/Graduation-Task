@@ -12,9 +12,11 @@ class ChargesController < ApplicationController
     :plan=>"lesson1"
     )
 
-    payment= Payment.create(email: params[:stripeEmail],card: params[:stripeToken],
-        amount: course.price_in_cents,description: course.description,currency: "usd",
+    payment= Payment.create(email: current_user.email,card: params[:stripeToken],
+        amount: course.price_in_cents,description: course.name,currency: "usd",
         user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
+        payment.save
+      SlackNotifier::CLIENT.ping "💸 Boom! New Payment from #{current_user.email}! 💸"
 
         redirect_to payment
     

@@ -1,0 +1,13 @@
+<% @payments.each do |payment| %>
+  <% if payment.email==current_user.email && payment.course_id==@course.id%>
+  <%= payment.email%>
+   <!--Panel Header-->
+    <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
+      <div style="width:100%; height:auto;margin-left:50px">
+        <video id="my-video" class="video-js" controls preload="auto" width="700px"
+        height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
+          <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
+      </div>
+    </div>
+  <% end %>
+<% end %>
