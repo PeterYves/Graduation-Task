@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :create_only_if_admin, only: [:create, :new, :destroy, :update,:edit]
 
   def index
     #@courses = Course.all
@@ -50,5 +51,10 @@ class CoursesController < ApplicationController
 
     def course_params
       params.require(:course).permit(:name, :description, :price, :clip, :thumbnail,:user_id)
+    end
+    def create_only_if_admin
+      if current_user.user_type == "learner"
+        redirect_to courses_url, notice: 'You are not allowed to do this action'
+      end
     end
 end

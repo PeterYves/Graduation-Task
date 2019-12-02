@@ -8,5 +8,31 @@
   margin-top: 60px;
   background-size: contain;
   text-shadow: black;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  font-family: cursive
+}
+.p{
+  padding-top: 10px;
+  opacity: 0.2;
+  font-size: 30px;
+  border-top: 1px dashed;
+  font-family: Cabin;
+}
+.c{
+  background:opacify($color: #000000, $amount: 0);
+  margin-bottom: 250px;
+  opacity: 0.2;
+  font-size: xx-large;
+  font-family: Westminster;
+  padding: 20px;
+}
+
+.search {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.search:focus {
+  width: 100%;
 }

@@ -53,7 +53,6 @@
  * stripe
  * devise
  * kaminari
- * activeadmin
  * ransack
 
 ### Skills to be used:

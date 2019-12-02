@@ -1,11 +1,8 @@
-<div class="main">
-  <div class="content">
-    <div class="tasks">
 
-       
           <div class="form">
             <h2><%= @user.names %> 's Page</h2><hr>
             <h6><%= @user.email %> page</h6>
+           <td><%= @user.user_type %></td>
             <%= link_to 'View courses', courses_path %>
           </div>
           <div class="content-content">
@@ -20,8 +17,4 @@
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
 
-</div>
-</div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
+<br><br><br>

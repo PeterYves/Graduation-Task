@@ -29,10 +29,10 @@
         <li class="nav-item">
           <i class="fas fa-home"><%= link_to 'Home', root_path, :class => 'navbar-link',style:'color:black;text-decoration:none' %></i>
         </li>
-        <% if user_signed_in? %>
         <li class="nav-item">
           <i class="fas fa-book"><%= link_to 'Courses', courses_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
         </li>
+        <% if user_signed_in? %>
         <li class="nav-item" >
         <% if user_signed_in? && current_user.user_type=="admin" %>
         <li class="nav-item">
