@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
         amount: course.price_in_cents,description: course.name,currency: "usd",
         user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
         payment.save
-      SlackNotifier::CLIENT.ping "💸 Boom! New Payment from #{current_user.email}! 💸"
+      # SlackNotifier::CLIENT.ping "💸 Boom! New Payment from #{current_user.email}! 💸"
 
         redirect_to payment
     
