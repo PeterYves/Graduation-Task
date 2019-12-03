@@ -5,203 +5,118 @@
  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
  
 <script src="https://vjs.zencdn.net/7.5.5/video.js"></script>
+<main>
+  <div class="container-fluid">
+    <section class="card card-cascade narrower mb-5">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="view view-cascade py-3 gradient-card-header info-color-dark">
+            <h5 class="mb-0"><%= @course.name %></h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <p class="lead">
+                  <span class="badge info-color-dark p-2">Course Description</span>
+                </p>
 
-
-  <!--Main Navigation-->
-
-    <!--Main layout-->
-    <main>
-        <div class="container-fluid">
-
-            <!--Section: Modals-->
-            <section>
-
-
-
-            </section>
-            <!--Section: Modals-->
-
-            <!--Section: Main panel-->
-            <section class="card card-cascade narrower mb-5">
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-5">
-
-                        <!--Panel Header-->
-                        <div class="view view-cascade py-3 gradient-card-header info-color-dark">
-                            <h5 class="mb-0"><%= @course.name %></h5>
-                        </div>
-                        <!--/Panel Header-->
-
-                        <!--Panel content-->
-                        <div class="card-body">
-
-                            <!--Grid row-->
-                            <div class="row">
-
-                                <!--Grid column-->
-                                <div class="col-md-6 mb-4">
-
-                                    <!--Date select-->
-                                    <p class="lead">
-                                        <span class="badge info-color-dark p-2">Course Description</span>
-                                    </p>
-
-                                    <p><%= @course.description %></p>
-                                    <!--Date pickers-->
-                                    <p class="lead my-4">
-                                        <span class="badge info-color-dark p-2">Published By</span>
-                                    </p>
-                                    <div class="md-form">
-                                        <label for="date-picker-example"><%= @course.user.email %></label>
-                                    </div>
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-md-6 mb-4 text-center">
-
-                                    <!--Summary-->
-                                    <p class="lead">
-                                        <span class="badge info-color-dark p-2">Published date</span>
-                                    </p>
-                                    <p><%= @course.created_at %></p>
-                                    <p class="lead">
-                                        <span class="badge info-color-dark p-2">Course Price</span>
-                                    </p>
-                                    <p><%= @course.price %>$</p>
-
-                                    
-                                    <h5>
-                                        <span class="badge green p-2">
-
-
-                                        <%= form_tag charges_path, id:'chargeForm' do %>
-
-                                         <% if flash[:error].present? %>
-                                           <div id="error_explanation">
-                                             <p><%= flash[:error] %></p>
-                                           </div>
-                                         <% end %>
-
-                                          <script src="https://checkout.stripe.com/checkout.js"></script>
-                                          <%= hidden_field_tag 'stripeToken'%>
-                                          <%= hidden_field_tag 'amount',@course.price_in_cents %>
-                                          <%= hidden_field_tag 'stripeEmail',current_user.email%>
-                                          <%= hidden_field_tag 'course_id', @course.id %>
-                                          <button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
-                                          glyphicon-ok"></span>Pay</button>
-
-                                        <script>
-                                          var handler = StripeCheckout.configure({
-                                          key: '<%= Rails.configuration.stripe[:publishable_key]%>',
-                                          token: function(token, arg){
-                                          document.getElementById("stripeToken").value=token.id;
-                                          document.getElementById("stripeEmail").value=token.email;
-                                          document.getElementById("chargeForm").submit();
-                                           }
-                                         });
-                                          document.getElementById("btn-buy").addEventListener('click',function(e){
-                                          handler.open({
-                                          name: 'Programming HUb',
-                                          description: '<%= @course.name %> ($<%= @course.price %>)',
-                                          amount: document.getElementById("amount").value 
-                                        });
-                                          e.preventDefault();
-                                        })
-                                        </script>
-                                        <% end %>
-                                            <i class="fa fa-arrow-circle-up ml-1"></i>
-                                        </span>
-                                    </h5>
-                                </div>
-                                <!--Grid column-->
-                            </div>
-                            <!--Grid row-->
-                        </div>
-                        <!--Panel content-->
-                    </div> 
-                    <!--Grid column-->
-                    <div class="col-md-7">
-                      <% if current_user.user_type=="admin" || current_user.email==@course.user.email%>
-                      <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
-                        <div style="width:100%; height:auto;margin-left:50px">
-                          <video id="my-video" class="video-js" controls preload="auto" width="700px"
-                          height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
-                          <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
-                        </div>
-                        
-                      </div>
-                      <% else %>
-                        <%= render partial: 'payments/index' %>
-                        <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
-                        <div style="width:100%; height:auto;margin-left:50px;position: relative;">
-                          <video id="my-video" class="video-js" width="700px"
-                          height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
-                          <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
+                <p><%= @course.description %></p>
+                <p class="lead my-4">
+                  <span class="badge info-color-dark p-2">Published By</span>
+                </p>
+                <div class="md-form">
+                  <label for="date-picker-example"><%= @course.user.email %></label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4 text-center">
+                <p class="lead">
+                  <span class="badge info-color-dark p-2">Published date</span>
+                </p>
+                <p><%= @course.created_at %></p>
+                <p class="lead">
+                  <span class="badge info-color-dark p-2">Course Price</span>
+                </p>
+                <p><%= @course.price %>$</p>
+                <h5>
+                  <span class="badge green p-2">
+                    <%= form_tag charges_path, id:'chargeForm' do %>
+                      <% if flash[:error].present? %>
+                        <div id="error_explanation">
+                          <p><%= flash[:error] %></p>
                         </div>
                       <% end %>
-                        <!--/Card image-->
-                        
-                    </div>
-                    
-                </div>
-                <!--Grid row-->
-            </section>
-            <!--Section: Main panel-->
 
-            <!--Section: Table-->
-            <section class="mb-5">
+                      <script src="https://checkout.stripe.com/checkout.js"></script>
+                      <%= hidden_field_tag 'stripeToken'%>
+                      <%= hidden_field_tag 'amount',@course.price_in_cents %>
+                      <%= hidden_field_tag 'stripeEmail',current_user.email%>
+                      <%= hidden_field_tag 'course_id', @course.id %>
+                      <button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon 
+                      glyphicon-ok"></span>Pay</button>
 
-                <!--Top Table UI-->
-                <div class="card p-2 mb-5">
-
-                    <!--Grid row-->
-                    <div class="row">
-
-                        <!--Grid column-->
-                        <div class="col-lg-3 col-md-12">
-
-                            <!--Name-->
-                            
-                                
-                                <p class="lead">
-                                  <span class="badge info-color-dark p-2">Comments</span>
-                                </p>
-                            
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-3 col-md-6">
-
-                            <!--Blue select--
-
-                        <!-- Get an HTML id of this comments_area and update only the part of that div -->
-                          <div id="comments_area">
-                          <!-- Render to display the posted comment-->
-                            <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
-                          </div>
-
-  
-                            <!--/Blue select-->
-
-                        </div>
-                        <!--Grid column-->
-                        <div class="col-lg-3 col-md-6">
-
-                            <!-- Render to display the comment field on the blogs detail page -->
-                          <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
-
-                        </div>
-                        <!--Grid column-->
-
-                    </div>
-                    <!--Grid row-->
-
-                </div>
-             </main>
+                      <script>
+                        var handler = StripeCheckout.configure({
+                        key: '<%= Rails.configuration.stripe[:publishable_key]%>',
+                        token: function(token, arg){
+                        document.getElementById("stripeToken").value=token.id;
+                        document.getElementById("stripeEmail").value=token.email;
+                        document.getElementById("chargeForm").submit();
+                          }
+                        });
+                        document.getElementById("btn-buy").addEventListener('click',function(e){
+                        handler.open({
+                        name: 'Programming HUb',
+                        description: '<%= @course.name %> ($<%= @course.price %>)',
+                        amount: document.getElementById("amount").value 
+                        });
+                        e.preventDefault();
+                        })
+                      </script>
+                    <% end %>
+                  <i class="fa fa-arrow-circle-up ml-1"></i>
+                </span>
+              </h5>
+            </div>                               
+          </div>   
+        </div>
+      </div> 
+      <div class="col-md-7">
+        <% if current_user.user_type=="admin" || current_user.email==@course.user.email%>
+        <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
+          <div style="width:100%; height:auto;margin-left:50px">
+            <video id="my-video" class="video-js" controls preload="auto" width="700px"
+            height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
+            <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
+          </div>         
+        </div>
+        <% else %>
+          <%= render partial: 'payments/index' %>
+          <div class="view view-cascade py-3 gradient-card-header info-color-dark mb-4">
+          <div style="width:100%; height:auto;margin-left:50px;position: relative;">
+            <video id="my-video" class="video-js" width="700px"
+            height="300px" download="true" poster="<%= url_for(@course.thumbnail) %>" data-setup="{}">
+            <source src="<%= url_for(@course.clip) %>" type="video/mp4"/></video>
+          </div>
+        <% end %>
+      </div>                   
+    </div>
+  </section>
+  <section class="mb-5">
+    <div class="card p-2 mb-5">
+      <div class="row">
+        <div class="col-lg-3 col-md-12">
+          <p class="lead">
+            <span class="badge info-color-dark p-2">Comments</span>
+          </p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
+        </div>
+      </div>
+    </div>
+  </main>

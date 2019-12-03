@@ -1,20 +1,14 @@
-
-          <div class="form">
-            <h2><%= @user.names %> 's Page</h2><hr>
-            <h6><%= @user.email %> page</h6>
-           <td><%= @user.user_type %></td>
-            <%= link_to 'View courses', courses_path %>
-          </div>
-          <div class="content-content">
-        
-        
-          <h2 style="text-align:center">Sorry! You are not The Page Owner</h2>
-          <p style="text-align:center"> Only the Page owner can see his Profile.</p>
-        
-
-
-<% flash.each do |key, value| %>
+<div class="form">
+  <h2><%= @user.names %> 's Page</h2><hr>
+  <h6><%= @user.email %> page</h6>
+  <td><%= @user.user_type %></td>
+  <%= link_to 'View courses', courses_path %>
+</div>
+<div class="content-content">      
+  <h2 style="text-align:center">Sorry! You are not The Page Owner</h2>
+  <p style="text-align:center"> Only the Page owner can see his Profile.</p>
+  <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
-
+</div>
 <br><br><br>

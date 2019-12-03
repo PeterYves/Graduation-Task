@@ -3,6 +3,7 @@ class Payment < ApplicationRecord
   def to_param
     uuid
   end
+  
   def email_payment
     PaymentMailer.payment_receipt(self) .deliver
   end

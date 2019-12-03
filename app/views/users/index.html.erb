@@ -1,36 +1,28 @@
 <h1 class="header"><%= t('view.Users-list') %></h1>
 <p id="notice" class="alert-danger"><%= notice %></p>
   <div class="table-responsive">
-
-  <!--Table-->
-  <table class="table">
-    <!--Table head-->
-    <thead>
-      <tr>
-        <th class="th-lg">User Name</th>
-        <th class="th-lg">Email</th>
-        <th class="th-lg">User_type</th>
-        <th class="th-lg" colspan=3> Actions</th>
-      </tr></td>
-    </thead>
-    <!--Table head-->
-
-    <!--Table body-->
-    <tbody>
-    <% @users.each do |user| %>
-      <tr> 
-        <td><%= user.names %></td>
-        <td><%= user.email %></td>
-        <td><%= user.user_type %></td>
-        <td><%= link_to 'Edit', edit_user_path(user),class:'btn-sm btn-info' %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class:'btn-sm btn-danger' %></td>
-      </tr>
-
-    </tbody>
-    <!--Table body-->
-    <% end %>
-  </table>
-  <%= link_to 'New User',new_user_path %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="th-lg">User Name</th>
+          <th class="th-lg">Email</th>
+          <th class="th-lg">User_type</th>
+          <th class="th-lg" colspan=3> Actions</th>
+        </tr></td>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr> 
+            <td><%= user.names %></td>
+            <td><%= user.email %></td>
+            <td><%= user.user_type %></td>
+            <td><%= link_to 'Edit', edit_user_path(user),class:'btn-sm btn-info' %></td>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class:'btn-sm btn-danger' %></td>
+          </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <%= link_to 'New User',new_user_path %>
 </div>
 
 
