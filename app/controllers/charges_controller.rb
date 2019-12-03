@@ -13,12 +13,11 @@ class ChargesController < ApplicationController
     )
 
     payment= Payment.create(email: current_user.email,card: params[:stripeToken],
-        amount: course.price_in_cents,description: course.name,currency: "usd",
-        user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
-        payment.save
-      # SlackNotifier::CLIENT.ping "💸 Boom! New Payment from #{current_user.email}! 💸"
+      amount: course.price_in_cents,description: course.name,currency: "usd",
+      user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
+      payment.save
 
-        redirect_to payment
+      redirect_to payment
     
     rescue Stripe::CardError => e
     flash[:error] = e.message

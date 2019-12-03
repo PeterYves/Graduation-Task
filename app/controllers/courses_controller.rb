@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   before_action :create_only_if_admin, only: [:create, :new, :destroy, :update,:edit]
 
   def index
-    #@courses = Course.all
     @q = Course.ransack(params[:q])
     @courses = @q.result(distinct: true).page(params[:page])
   end
@@ -22,7 +21,6 @@ class CoursesController < ApplicationController
   def edit
   end
   def create
-    # @course = Course.new(course_params)
     @course = current_user.courses.build(course_params)
       if @course.save
         redirect_to @course, notice: 'Course was successfully created.'

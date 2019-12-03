@@ -9,7 +9,6 @@ RSpec.feature "Course Selling function", type: :feature do
     Course.create(name: 'jquerry', description: 'it is a good course',price:'200')
     Course.create(name: 'javascript', description: 'it is a good course to web designers',price:'200')
     visit courses_path
-    # save_and_open_page
   end
 
   scenario "Test Course creation" do

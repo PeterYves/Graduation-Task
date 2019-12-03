@@ -9,7 +9,6 @@ RSpec.feature "Course Selling function", type: :feature do
     User.create(names: 'Kalisa Emmy', email: 'kalisa@gmail.com',user_type:'learner',password_confirmation:'123456')
     User.create(names: 'Rita', email: 'rita@gmail.com',user_type:'learner',password_confirmation:'123456')
     visit users_path
-    # save_and_open_page
   end
 
   scenario "Test User creation" do
