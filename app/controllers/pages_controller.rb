@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-def home
-  @courses = Course.all
+  def home
+    @courses = Course.all
   end
 end

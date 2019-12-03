@@ -2,9 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :only_admin_view_other_users, only: [:index,:new]
+
   def index
     @users = User.all
   end
+  
   def admin
     @users = User.all
   end
