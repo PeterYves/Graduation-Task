@@ -4,8 +4,7 @@ def create_learner(email)
       email:  email,
       password: "123456"
     )
-  end
-  
+  end 
   1...17.times do |i|
     create_learner("learner_#{i}@gmail.com")
   end
@@ -18,10 +17,6 @@ def create_learner(email)
       password: "123456"
     )
   end
-  
   1...3.times do |i|
     create_admin("admin_#{i}@gmail.com")
   end
-
-
-
