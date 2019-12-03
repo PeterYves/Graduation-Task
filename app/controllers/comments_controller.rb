@@ -12,6 +12,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @course = Course.find(params[:course_id])
+    @comment = Comment.find(params[:id])
+  end
+  def update
+    @comment = Comment.find(params[:id])
+    @course = Course.find(params[:course_id])
+      if @comment.update(params[:comment].permit(:description))
+        redirect_to course_path(@course)
+      end
+  end
+
   def destroy
     @course = Course.find(params[:course_id])
     @comment = Comment.find(params[:id])

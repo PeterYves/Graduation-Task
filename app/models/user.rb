@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :courses, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  validates :names,:user_type,presence: true
   def self.admins
     @users = User.all
     @admins = 0

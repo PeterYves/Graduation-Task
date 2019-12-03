@@ -6,6 +6,7 @@
       <h6><%= comment.user.email %></h2>
       <%= comment.description %>
 <% if comment.user.email== current_user.email%>
+<%= link_to 'Edit', edit_course_comment_path(comment.course, comment), class:'btn btn-primary btn-sm'%>
 <%= button_to(course_comment_path(@course.id,comment.id), {method: :delete, remote: true, class:"btn btn-danger delete-comment-button pull-right",value:'delete', params:{id: comment.id, course: course.id}} ) do%>
       <i class="glyphicon glyphicon-trash"></i>
     <% end %>

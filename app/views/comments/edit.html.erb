@@ -1,0 +1,7 @@
+<div class="container">
+    <%= form_for([@course, @comment],remote: true) do |f| %>
+        <%= f.text_area :description, class:'form-control'%>
+        <%= f.submit 'Edit', class:'btn btn-primary'%>
+    <% end %>
+</div>
+<br><br><br><br><br><br>

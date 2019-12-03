@@ -16,5 +16,15 @@ User.create(names: 'francois bagbo', email: 'fra@gmail.com', password: '123456',
 User.create(names: 'kiko casilla', email: 'kiko@gmail.com', password: '123456', password_confirmation: '123456' )
 User.create(names: 'amina', email: 'amina@gmail.com', password: '123456', password_confirmation: '123456' )
 
+User.create(names: 'Kavuna Paul', email: 'kavuna@gmail.com', password: '123456', password_confirmation: '123456', user_type:'admin')
+User.create(names: 'kaka', email: 'kaka@gmail.com', password: '123456', password_confirmation: '123456',user_type:'admin' )
+User.create(names: 'masudi', email: 'masudi@gmail.com', password: '123456', password_confirmation: '123456')
+User.create(names: 'marcus', email: 'marcus@gmail.com', password: '123456', password_confirmation: '123456', user_type:'admin' )
+User.create(names: 'milka', email: 'milka@gmail.com', password: '123456', password_confirmation: '123456' )
+User.create(names: 'mico', email: 'mico@gmail.com', password: '123456', password_confirmation: '123456' )
+User.create(names: 'Rita Ora', email: 'ritaora@gmail.com', password: '123456', password_confirmation: '123456' )
+User.create(names: 'fils', email: 'fils@gmail.com', password: '123456', password_confirmation: '123456' )
+User.create(names: 'kelly rowland', email: 'kelly@gmail.com', password: '123456', password_confirmation: '123456' )
+User.create(names: 'amika harris', email: 'harris@gmail.com', password: '123456', password_confirmation: '123456' )
 
 
