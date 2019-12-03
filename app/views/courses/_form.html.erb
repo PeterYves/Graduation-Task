@@ -1,47 +1,47 @@
-<%= form_with(model: course, local: true) do |f| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <%= form_with(model: course, local: true) do |f| %>
+        <% if course.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
-      <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <div class="modal-body mx-3">
-      <div class="md-form mb-5">
-        <i class="fas fa-book prefix grey-text"></i>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name",id:"orangeForm-name", class:"form-control validate" %>
-        <label data-error="wrong" data-success="right" for="orangeForm-name">Course Name</label>
-      </div>
+            <ul>
+            <% course.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-book prefix grey-text"></i>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name",id:"orangeForm-name", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Course Name</label>
+        </div>
 
-      <div class="md-form mb-5">
-        <i class="fas fa-book prefix grey-text"></i>
-        <%= f.text_field :description, autofocus: true, autocomplete: "Description",id:"orangeForm-email", class:"form-control validate" %>
-        <label data-error="wrong" data-success="right" for="orangeForm-email">Description</label>
-      </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-book prefix grey-text"></i>
+          <%= f.text_field :description, autofocus: true, autocomplete: "Description",id:"orangeForm-email", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Description</label>
+        </div>
 
-      <div class="md-form mb-5">
-        <i class="fas fa-video prefix grey-text"></i>
-        <%= f.file_field :clip, autofocus: true, autocomplete: "clip",id:"orangeForm-email", class:"form-control validate" %>
+        <div class="md-form mb-5">
+          <i class="fas fa-video prefix grey-text"></i>
+          <%= f.file_field :clip, autofocus: true, autocomplete: "clip",id:"orangeForm-email", class:"form-control validate" %>
+          
+        </div>
         
-      </div>
-      
-      
-
-      <div class="md-form mb-4">
-        <i class="fas fa-image prefix grey-text"></i>
-        <%= f.file_field :thumbnail, autocomplete: "thumbnail",id:"orangeForm-pass", class:"form-control validate" %>
         
-      </div>
 
-      <div class="md-form mb-4">
-        <i class="fas fa-dollar prefix grey-text"></i>
-        <%= f.number_field :price, autocomplete: "price",id:"orangeForm-pass", class:"form-control validate" %>
-        <label data-error="wrong" data-success="right" for="orangeForm-pass">Course Price</label>
-      </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-image prefix grey-text"></i>
+         <%= f.file_field :thumbnail, autocomplete: "thumbnail",id:"orangeForm-pass", class:"form-control validate" %>
+          
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-dollar prefix grey-text"></i>
+          <%= f.number_field :price, autocomplete: "price",id:"orangeForm-pass", class:"form-control validate" %>
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Course Price</label>
+        </div>
         
       </div>
       <div class="modal-footer d-flex justify-content-center">
