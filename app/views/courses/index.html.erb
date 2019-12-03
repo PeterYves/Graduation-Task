@@ -16,7 +16,7 @@
           </a>
         </div>
         <!--/Card image-->
-        <p class="p">Scroll To See All Courses</p>
+        <p class="p"><%= t('view.Scroll_To_See_All_Courses') %></p>
       </div>
       <!--/.Card-->
     </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="col-lg-3 col-md-6">
               <%= search_form_for @q do |f| %>
-              <%= f.search_field :name_cont,class:"form-control my-0 py-0 search",placeholder:"Search", style:"float:left" %>
+              <%= f.search_field :name_cont,class:"form-control my-0 py-0 search",placeholder:t('view.Search'), style:"float:left" %>
                 <button class="btn btn-sm btn-info ml-2 px-2">
                   <i class="fa fa-search"></i>
                 </button>
@@ -43,7 +43,7 @@
           <% if current_user && current_user.user_type=="admin"%>
           <div class="col-lg-3 col-md-12">  
             <p class="lead">
-              <%= link_to 'New Course', new_course_path,class:"btn btn-ouline-link",style:'foat:right'  %>
+              <%= link_to t('view.New Course'), new_course_path,class:"btn btn-ouline-link",style:'foat:right'  %>
             </p>
           </div>
           <% end %>
@@ -78,10 +78,10 @@
               <p class="card-text"><%= course.description %>
               <p class="card-text">Price:<%= course.price %>$</p>
               <p class="card-text">Posted By:<%= course.user.names %></p>
-              <%= link_to 'Show', course,class:"btn btn-outline-info btn-sm" %>
+              <%= link_to t('view.Show'), course,class:"btn btn-outline-info btn-sm" %>
               <% if current_user && current_user.user_type=="admin"%>
-                <%= link_to 'Edit', edit_course_path(course),class:"btn btn-outline-success btn-sm" %>
-                <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-outline-danger btn-sm" %>
+                <%= link_to t('view.Edit'), edit_course_path(course),class:"btn btn-outline-success btn-sm" %>
+                <%= link_to t('view.Destroy'), course, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-outline-danger btn-sm" %>
               <% end %>
             </div>
 

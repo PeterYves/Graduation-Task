@@ -30,19 +30,19 @@
           <i class="fas fa-home"><%= link_to 'Home', root_path, :class => 'navbar-link',style:'color:black;text-decoration:none' %></i>
         </li>
         <li class="nav-item">
-          <i class="fas fa-book"><%= link_to 'Courses', courses_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
+          <i class="fas fa-book"><%= link_to 'Courses', courses_path, :class => 'navbar-link',style:'color:black;text-decoration:none' %></i>
         </li>
         <% if user_signed_in? %>
         <li class="nav-item" >
         <% if user_signed_in? && current_user.user_type=="admin" %>
         <li class="nav-item">
-          <i class="fas fa-archive"></i><%= link_to 'Payments', payments_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none;font-weight:bolder;' %></i>
+          <i class="fas fa-archive"></i><%= link_to 'Payments', payments_path, :class => 'navbar-link',style:'color:black;text-decoration:none;font-weight:bolder;' %></i>
         </li>
         <li class="nav-item">
           <i class="fas fa-users"></i><%= link_to 'Users', users_path, :class => 'navbar-link',style:'color:black;text-decoration:none;font-weight:bolder;padding-right:10px' %></i>
         </li>
         <% end %>
-          <i class="fas fa-user"><%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link',style:'color:black',style:'color:black;text-decoration:none' %></i>
+          <i class="fas fa-user"><%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link',style:'color:black;text-decoration:none' %></i>
         </li>
         <li class="nav-item">
           <i class="fas fa-sign-out-alt"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link',style:'color:black;text-decoration:none'  %></i>
@@ -77,8 +77,10 @@
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns here to organize your footer content.</p>
+          <h5 class="text-uppercase"><i class="fa fa-laptop">Programming Hub</i></h5>
+          <p>Here you can learn any type of programming langage you want or recommend some special course in a comment box.
+            when you get stucked on any course here you can put in comment box and we can help you out fastly.
+          </p>
 
         </div>
         <!-- Grid column -->
@@ -89,20 +91,20 @@
         <div class="col-md-3 mb-md-0 mb-3">
 
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase">Contacts</h5>
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="#!">tel1: 0788456739</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="#!">tel2: 0788456739</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="#!">Email: prohub@gmail.com</a>
             </li>
             <li>
-              <a href="#!">Link 4</a>
+              <a href="#!">instagram: ProgrammingHub</a>
             </li>
           </ul>
 
@@ -113,20 +115,14 @@
         <div class="col-md-3 mb-md-0 mb-3">
 
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase">Address</h5>
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="#!">Kigali Rwanda</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
+              <a href="#!">Kicukiro Nyanza</a>
             </li>
           </ul>
 
@@ -140,8 +136,8 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+       Peter Yves  &nbsp;&nbsp;&nbsp;&nbsp; All Right Reserved
     </div>
     <!-- Copyright -->
 
